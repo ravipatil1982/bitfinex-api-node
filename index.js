@@ -6,6 +6,8 @@ const WSv1 = require('./lib/transports/ws.js')
 const RESTv2 = require('./lib/transports/rest2.js')
 const WSv2 = require('./lib/transports/ws2.js')
 
+const debug = require('debug')('bfx:examples:rest2-ledgers')
+
 /**
  * Provides access to versions 1 & 2 of the HTTP & WebSocket Bitfinex APIs
  */
@@ -26,12 +28,14 @@ class BFX {
     ws: {},
     rest: {}
   }) {
+
     if (opts.constructor.name !== 'Object') {
       throw new Error([
         'constructor takes an object since version 2.0.0, see:',
         'https://github.com/bitfinexcom/bitfinex-api-node#version-200-breaking-changes\n'
       ].join('\n'))
     }
+    debug('in index.js controller opts.apiKey ', opts);
 
     this._apiKey = opts.apiKey || ''
     this._apiSecret = opts.apiSecret || ''
@@ -42,6 +46,9 @@ class BFX {
       rest: {},
       ws: {}
     }
+
+    debug('inside index.js extra options... apiKey = ', this._apiKey)
+
   }
 
   _getTransportPayload (extraOpts) {
@@ -65,6 +72,7 @@ class BFX {
     }
 
     const key = `${version}|${JSON.stringify(extraOpts)}`
+    
 
     if (!this._transportCache.rest[key]) {
       Object.assign(extraOpts, this._restArgs)

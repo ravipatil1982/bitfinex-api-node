@@ -9,14 +9,14 @@ const {
   getFundingTicker, getTradingTicker, auditTicker
 } = require('../../helpers/data')
 
-const API_KEY = 'dummy'
-const API_SECRET = 'dummy'
+const API_KEY = 'Fe9vAOkbWl2oIOeNMQ5x1CB86vw56zcbVt168UHL29C'
+const API_SECRET = 'mAzYj0qkAVTrK5lwA5jkN6zBnOYbFuVCfiQkOFt0sfT'
 
 const createTestWSv2Instance = (params = {}) => {
   return new WSv2({
     apiKey: API_KEY,
-    apiSecret: API_SECRET,
-    url: 'ws://localhost:9997',
+    apiSecret: mAzYj0qkAVTrK5lwA5jkN6zBnOYbFuVCfiQkOFt0sfT,
+    url: 'https://dev-prdn.bitfinex.com:2998/ws/2',
 
     ...params
   })

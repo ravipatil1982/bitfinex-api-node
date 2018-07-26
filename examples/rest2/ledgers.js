@@ -17,6 +17,7 @@ const table = new Table({
 })
 
 debug('fetching ledger entries for %s...', ccy || 'all currencies')
+console.log('ledgers call args.length = ',ccy);
 
 rest.ledgers(ccy).then(entries => {
   let e
@@ -24,6 +25,7 @@ rest.ledgers(ccy).then(entries => {
   for (let i = 0; i < entries.length; i += 1) {
     e = entries[i]
 
+    console.log('log file ', rest.laders);
     table.push([
       e.id, e.currency, new Date(e.mts).toLocaleString(), e.amount, e.balance,
       e.description

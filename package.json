@@ -1,5 +1,5 @@
 {
-  "name": "bitfinex-api-node",
+  "name": "bitfinex-api",
   "version": "2.0.0-beta.1",
   "description": "Node reference library for Bitfinex API",
   "engines": {
@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "bignumber.js": "^6.0.0",
+    "bitfinex-api-node": "^2.0.0-beta.1",
     "bluebird": "^3.5.1",
     "cbq": "0.0.1",
     "crc-32": "^1.2.0",

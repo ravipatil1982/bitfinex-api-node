@@ -26,10 +26,11 @@ rest.symbols().then(symbols => {
   let t
   for (let i = 0; i < tickers.length; i += 1) {
     t = tickers[i]
-    table.push([
-      t.symbol, t.lastPrice, t.high, t.low, t.dailyChange, t.bid, t.ask,
-      t.bidSize, t.askSize
-    ])
+    table.push([t.FRR, t.BID, t.BID_PERIOD, t.BID_SIZE, t.LOW])
+    // table.push([
+    //   t.symbol, t.lastPrice, t.high, t.low, t.dailyChange, t.bid, t.ask,
+    //   t.bidSize, t.askSize
+    // ])
   }
 
   console.log(table.toString())

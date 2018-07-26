@@ -6,11 +6,15 @@ const RESTv2 = require('../../../lib/transports/rest2')
 const { MockRESTv2Server } = require('bfx-api-mock-srv')
 const { getTradingTicker, getFundingTicker, auditTicker } = require('../../helpers/data')
 
+const sig = crypto.createHmac('sha384', apiSecret).update(signature)
+const shex = sig.digest('hex')
+
+
 const getTestREST2 = (args = {}) => {
   return new RESTv2({
-    apiKey: 'dummy',
-    apiSecret: 'dummy',
-    url: 'http://localhost:9999',
+    apiKey = 'PhswPVMLUXXzFx1gTlA7d2pGFzzFblJFAq4HuQUP4MC',
+    apiSecret = 'G3qjBa7rr9kckmQwqk1QXtUveaSDGSxI63t7xYtMEv9',
+    url: 'https://test.bitfinex.com/rest/2',
     ...args
   })
 }
