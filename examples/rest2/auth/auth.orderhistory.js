@@ -31,25 +31,28 @@ const options = {
 
 const Table = require('cli-table2')
 const t = new Table({
-  colWidths: [13, 6, 14, 12, 18, 18, 10, 10, 14, 16, 10, 10],
-  head: [
-    'ID', 'GID', 'CID', 'SYMBOL', 'MTS_CREATE', 'MTS_UPDATE', 'AMOUNT', 'AMOUNT_ORIG','TYPE', 'FLAGS', 'ORDER_STATUS', 'PRICE'
-  ]
+  colWidths: [13, 10,  14,     14,       16,           18,           10,       14,           16,     14],
+  head: ['ID', 'GID', 'CID', 'Symbol', 'MTS_CREATE', 'MTS_UPDATE', 'AMOUNT', 'AMOUNT_ORIG', 'TYPE', 'TYPE_PREV']
+})
+
+const t1 = new Table({
+colWidths: [13,   10,           14,       28,         16,                 18,                 10,    10,    14 ],
+  head: ['FLAGS','PRICE', 'PRICE_AVG', 'ORDER_STATUS','PRICE_TRAILING', 'PRICE_AUX_LIMIT', 'NOTIFY', 'HIDDEN', 'PLACED_ID']
 })
 
 request.post(options, (error, response, body) => {
-  //console.log('body : ', body)
-  
+
   body.forEach(function(trade) {
-    t.push([
-      trade[0], trade[1], trade[2], trade[3], trade[4], trade[5], trade[6], trade[7], trade[8], trade[9], trade[10], trade[11]
-    ])
+    t.push([trade[0], trade[1], trade[2], trade[3], trade[4], trade[5], trade[6], trade[7], trade[8], trade[9]])
+    t1.push([trade[10], trade[11], trade[12], trade[13], trade[14], trade[15], trade[16], trade[17], trade[18]])
   })
 
-  console.log('====== Order history ======',)
+  console.log('====== Order History ======',)
+  //console.log(body)
   if(t.length>0)
   {
     console.log(t.toString())
+    console.log(t1.toString())
   }
   else
   {

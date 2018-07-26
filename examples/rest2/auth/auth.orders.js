@@ -31,27 +31,28 @@ const options = {
 
 const Table = require('cli-table2')
 const t = new Table({
-  colWidths: [13, 13, 16, 14, 14, 14, 20, 16, 16, 16],
-  head: [
-    'ID', 'GID', 'CID', 'Symbol', 'MTS_CREATE', 'MTS_UPDATE', 'AMOUNT', 'AMOUNT_ORIG',
-    'TYPE', 'ORDER_STATUS'
-  ]
+  colWidths: [13, 10,  14,     14,       16,           18,           10,       14,           16,     14],
+  head: ['ID', 'GID', 'CID', 'Symbol', 'MTS_CREATE', 'MTS_UPDATE', 'AMOUNT', 'AMOUNT_ORIG', 'TYPE', 'TYPE_PREV']
+})
+
+const t1 = new Table({
+colWidths: [13,   10,           14,       14,         16,                 18,                 10,       14 ],
+  head: ['FLAGS','PRICE', 'PRICE_AVG', 'ORDER_STATUS','PRICE_TRAILING', 'PRICE_AUX_LIMIT', 'HIDDEN', 'PLACED_ID']
 })
 
 request.post(options, (error, response, body) => {
 
-  let trade
   body.forEach(function(trade) {
-    //trade = body[i]
-    t.push([
-      trade[0], trade[1], trade[2], trade[3], trade[4], trade[5], trade[6], trade[7], trade[8], trade[9]
-    ])
+    t.push([trade[0], trade[1], trade[2], trade[3], trade[4], trade[5], trade[6], trade[7], trade[8], trade[9]])
+    t1.push([trade[10], trade[11], trade[12], trade[13], trade[14], trade[15], trade[16], trade[17]])
   })
 
   console.log('====== Orders ======',)
-  if(trade!==undefined)
+  //console.log(body)
+  if(t.length>0)
   {
     console.log(t.toString())
+    console.log(t1.toString())
   }
   else
   {
