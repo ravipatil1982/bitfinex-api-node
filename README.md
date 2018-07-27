@@ -17,6 +17,11 @@ Documentation at [https://docs.bitfinex.com/v2/reference](https://docs.bitfinex.
 
 See `doc/` for REST2 and WS2 API methods.
 
+## API Calls
+To run the API and fetch authenticated data follow below steps:
+1. cd examples/rest2/auth
+2. node orders.js - this will fetch the orders data from bitfinex application
+
 ## Usage
 
 Version 2.0.0 of `bitfinex-api-node` supports the v2 REST and WebSocket APIs. The clients for v1 of those APIs are maintained for backwards compatibility, but deprecated.
